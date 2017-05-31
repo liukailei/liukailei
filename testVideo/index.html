@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>视频</title>
+	<meta charset="utf-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+	<div>
+		<img src="1.png">
+	</div>
+
+	<video></video>
+	
+
+</body>
+</html>
+<script type="text/javascript">
+
+	var video = $('video')[0];
+	$('img').each(function (i,v) {
+		v.isPlay = false;
+		v.currentTime = 0;
+	});
+	$('img')[0].onclick = function () {
+		this.isPlay = !this.isPlay;
+		if (this.isPlay) {
+			// 正在播放
+			console.log(video.currentTime);
+			this.currentTime = video.currentTime;
+			
+		}else{
+			// 已经暂停
+			video.src = 'ekgbqq.mp4';
+			video.currentTime = this.currentTime;
+			video.play();
+		}
+	};
+
+</script>

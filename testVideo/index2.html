@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img {
+            width: 300px;
+            height: 300px;
+        }
+        li{
+            display: inline-block;
+            width: 300px;
+            height: 300px;
+        }
+        video {
+            width: 300px;
+            height: 300px;
+            display: none;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+           $('ul').on('click','li',function () {
+               var attr = $(this).attr('isplay');
+               $(this).children('img').css('display','none').end().siblings().children('img').css('display','block');
+               if($(this).find('#vd').length == 0){
+                   $(this).append($('#vd'));
+                   $('#vd').attr('src',$(this).attr('vd-src'));
+               }
+//               console.log($(this)[0].isplay == 'false');
+               if(attr == 'false'){
+                   if($(this).attr('data-currTimer')){
+                       $('#vd')[0].currentTime = $(this).attr('data-currTimer');
+                   }
+                   $('#vd')[0].play();
+                   $(this).attr('isplay',true).siblings().attr('isplay',false);
+                   $(this).children('#vd').css('display','block');
+
+               }else{
+                   $('#vd')[0].pause();
+                   $(this).attr('isplay',false);
+                   $(this).attr('data-currTimer',$('#vd')[0].currentTime)
+               }
+
+           });
+        });
+    </script>
+</head>
+<body>
+    <ul>
+        <video id="vd" data-currTimer="0"></video>
+        <li isplay=false vd-src="jlgbqqiu.mp4">
+            <img src="1.png">
+        </li>
+        <li isplay=false vd-src="ekgbqq.mp4">
+            <img src="2.png">
+        </li>
+        <li isplay=false vd-src="meijianxue.mp4">
+            <img src="1.png">
+        </li>
+        <li isplay=false vd-src="nzbz.mp4">
+            <img src="2.png">
+        </li>
+    </ul>
+</body>
+</html>
